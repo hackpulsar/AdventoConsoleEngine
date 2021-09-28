@@ -1,0 +1,2 @@
+"D:\MinGW 11.0\mingw64\bin\ar.exe" qc libengine.a CMakeFiles/engine.dir/AdventoConsoleEngine.cpp.obj
+"D:\MinGW 11.0\mingw64\bin\ranlib.exe" libengine.a
