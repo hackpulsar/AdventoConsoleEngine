@@ -6,7 +6,6 @@ class Game :
 {
 public:
 	Game()
-		: engine::AdventoConsoleEngine(128, 128, "Example application")
 	{
 		
 	}
@@ -14,14 +13,14 @@ public:
 	~Game()
 	{  }
 
-	void Update() override
+	void Update(float fDeltaTime) override
 	{
 
 	}
 
-	void Render() const override
+	void Render() override
 	{
-		//std::cout << "Running..." << std::endl;
+		Clear(engine::default_colors::CYAN);
 	}
 
 private:
@@ -31,6 +30,7 @@ private:
 int main(void)
 {
 	Game game;
-	game.Start();
+	if (game.Construct(128, 120, "Example application"))
+		game.Start();
 	return 0;
 }

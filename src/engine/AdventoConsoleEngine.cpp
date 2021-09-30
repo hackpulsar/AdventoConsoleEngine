@@ -1,22 +1,33 @@
 #include "AdventoConsoleEngine.h"
 
+#include <chrono>
 #include <cstring>
 #include <iostream>
-#include <thread>
+#include <string>
 
 namespace engine
 {
-	AdventoConsoleEngine::AdventoConsoleEngine(uint16_t nWidth, uint16_t nHeight, std::string sAppName)
-		: m_nWidth(nWidth), m_nHeight(nHeight), m_sAppName(sAppName)
+	AdventoConsoleEngine::AdventoConsoleEngine()
 	{
 		m_hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE); // get console handle
-		m_ScreenBuffer = new CHAR_INFO[nWidth * nHeight];
-		std::memset(m_ScreenBuffer, 0, nWidth * nHeight);
+		m_hConsoleHandleIn = GetStdHandle(STD_INPUT_HANDLE); // get console handle
+	}
+
+	bool AdventoConsoleEngine::Construct(uint16_t nWidth, uint16_t nHeight, std::string sAppName)
+	{	
+		if (m_hConsoleHandleIn == INVALID_HANDLE_VALUE)
+			Error("Bad handle");
+
+		m_nWidth = nWidth;
+		m_nHeight = nHeight;
+		m_sAppName = sAppName;
 
 		// ініціцалізація консолі
 		COORD screenSize = { (short)m_nWidth, (short)m_nHeight };
-		SetConsoleScreenBufferSize(m_hConsoleHandle, screenSize); // розмір
-		SetConsoleActiveScreenBuffer(m_hConsoleHandle); // встановити активне вікно
+		if (!SetConsoleScreenBufferSize(m_hConsoleHandle, screenSize)) // розмір
+			Error("SetConsoleScreenBufferSize");
+		if (!SetConsoleActiveScreenBuffer(m_hConsoleHandle)) // встановити активне вікно
+			Error("SetConsoleActiveScreenBuffer");
 		
 		// налаштування шрифта
 		CONSOLE_FONT_INFOEX cfi;
@@ -26,22 +37,50 @@ namespace engine
 		cfi.dwFontSize.Y = 8;
 		cfi.FontFamily = FF_DONTCARE;
 		cfi.FontWeight = FW_NORMAL;
+		
+		wcscpy_s(cfi.FaceName, L"Consolas");
+		if (!SetCurrentConsoleFontEx(m_hConsoleHandle, false, &cfi)) // встановити налаштування шрифту
+			Error("SetCurrentConsoleFontEx");
 
 		CONSOLE_CURSOR_INFO info;
 		info.dwSize = 100;
 		info.bVisible = FALSE;
-		SetConsoleCursorInfo(m_hConsoleHandle, &info);
-		
-		wcscpy_s(cfi.FaceName, L"Consolas");
-		SetCurrentConsoleFontEx(m_hConsoleHandle, false, &cfi); // встановити налаштування шрифту
+		SetConsoleCursorInfo(m_hConsoleHandle, &info);	
 
 		m_windowRect = { 0, 0, short(m_nWidth - 1), short(m_nHeight - 1) };
-		SetConsoleWindowInfo(m_hConsoleHandle, TRUE, &m_windowRect); // встановити позицію та розмів вікна
+		if (!SetConsoleWindowInfo(m_hConsoleHandle, TRUE, &m_windowRect)) // встановити позицію та розмів вікна
+			Error("SetConsoleWindowInfo");
+
+		if (!SetConsoleMode(m_hConsoleHandleIn, ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT))
+			Error("SetConsoleMode");
+
+		m_ScreenBuffer = new CHAR_INFO[nWidth * nHeight];
+		std::memset(m_ScreenBuffer, 0, nWidth * nHeight);
+
+		SetConsoleCtrlHandler((PHANDLER_ROUTINE)FALSE, TRUE);
+
+		return true;
 	}
 
 	AdventoConsoleEngine::~AdventoConsoleEngine()
 	{
 		delete[] m_ScreenBuffer;
+	}
+
+	void AdventoConsoleEngine::Error(const char* sMessage)
+	{
+		char buf[256];
+		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, 256, NULL);
+		MessageBox(nullptr, TEXT(buf), TEXT(sMessage), MB_OK);
+	}
+
+	void AdventoConsoleEngine::Clear(engine::color clear_color)
+	{
+		for (int i = 0; i < int(m_nWidth * m_nHeight); ++i)
+		{
+			m_ScreenBuffer[i].Char.UnicodeChar = 0xDB;
+			m_ScreenBuffer[i].Attributes = clear_color;
+		}
 	}
 
 	void AdventoConsoleEngine::NativeRender()
@@ -53,20 +92,22 @@ namespace engine
 	{
 		using namespace std::chrono_literals;
 
+		auto t1 = std::chrono::system_clock::now();
+		auto t2 = std::chrono::system_clock::now();
+
 		while (m_bRunning)
 		{
-			// TODO: make it a method
-			std::memset(m_ScreenBuffer, 0, m_nWidth * m_nHeight); // очистити екран
+			t2 = std::chrono::system_clock::now();
+			std::chrono::duration<float> delta = t2 - t1;
+			t1 = t2;
 
-			this->Update();
+			this->Update(delta.count());
 			this->Render();
-
-			m_ScreenBuffer[0].Char.UnicodeChar = 0xB2;
-			m_ScreenBuffer[0].Attributes = 0x000F;
-
 			this->NativeRender();
-	
-			std::this_thread::sleep_for(0.005s); // визначений період часу між кадрами
+
+			// update title
+			std::string sTitle = m_sAppName + " - FPS: " + std::to_string(1.0f / delta.count());
+			SetConsoleTitle(sTitle.c_str());
 		}
 	}
 	
@@ -76,10 +117,8 @@ namespace engine
 		m_bRunning = true;
 		std::thread gameLoop(&AdventoConsoleEngine::GameLoop, this);
 
-		std::cin.get();
-
-		m_bRunning = false;
-		exit(0);
-		//std::cout << "Finished!" << std::endl;
+		//m_bRunning = false;
+		gameLoop.join();
+		//exit(0);
 	}
 }
