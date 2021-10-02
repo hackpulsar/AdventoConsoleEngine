@@ -359,29 +359,28 @@ CMakeFiles/Example.dir/main.cpp.obj: D:/Code/C++\ Projects/AdventoConsoleEngine/
   D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winsvc.h \
   D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/mcx.h \
   D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/imm.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/iostream \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/ostream \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/ios \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/ios_base.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_classes.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_classes.tcc \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/system_error \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/x86_64-w64-mingw32/bits/error_constants.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/stdexcept \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/streambuf \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/streambuf.tcc \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/basic_ios.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_facets.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/cwctype \
-  D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/wctype.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/streambuf_iterator.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_facets.tcc \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/basic_ios.tcc \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/ostream.tcc \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/istream \
-  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/istream.tcc
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/vector \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_uninitialized.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_vector.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_bvector.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/vector.tcc \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/algorithm \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_algo.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/algorithmfwd.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_heap.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_tempbuf.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/uniform_int_dist.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/pstl/glue_algorithm_defs.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/functional \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/std_function.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/unordered_map \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/ext/aligned_buffer.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/hashtable.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/hashtable_policy.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/node_handle.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/unordered_map.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/erase_if.h \
+  D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/pstl/execution_defs.h
 
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/string:
@@ -420,6 +419,10 @@ D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/thread:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/predefined_ops.h:
 
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/unordered_map.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_tempbuf.h:
+
 D:/Code/C++\ Projects/AdventoConsoleEngine/src/engine/AdventoConsoleEngine.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/inaddr.h:
@@ -446,8 +449,6 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/oleidl.h:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/memoryfwd.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/cwctype:
-
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winnls.h:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/clocale:
@@ -465,8 +466,6 @@ D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_iterator.h:
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winbase.h:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_algobase.h:
-
-D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/wctype.h:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/functexcept.h:
 
@@ -518,7 +517,11 @@ D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/debug/assertions.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/stdio.h:
 
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/vector:
+
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/wchar.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/ext/aligned_buffer.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512vbmi2vlintrin.h:
 
@@ -553,8 +556,6 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512vpopcntdq
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/typeinfo:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/system_error:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/xmmintrin.h:
 
@@ -690,10 +691,6 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/stdlib.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/x86_64-w64-mingw32/bits/ctype_inline.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/stdexcept:
-
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/stdlib.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winerror.h:
@@ -716,13 +713,13 @@ D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/exception_ptr.h:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/cxxabi_init_exception.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_classes.h:
-
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/nested_exception.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/virtdisk.h:
 
 D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_relops.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/algorithm:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/windows.h:
 
@@ -760,6 +757,8 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/stdarg.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/stdarg.h:
 
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/unordered_map:
+
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winapifamily.h:
@@ -777,8 +776,6 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512bf16vlint
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winnt.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/_mingw_unicode.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/basic_ios.tcc:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h:
 
@@ -830,6 +827,8 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/pshpack8.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/clwbintrin.h:
 
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/pstl/execution_defs.h:
+
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/clzerointrin.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/enqcmdintrin.h:
@@ -843,6 +842,8 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/lwpintrin.h:
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/movdirintrin.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/mwaitxintrin.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_vector.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/pconfigintrin.h:
 
@@ -863,8 +864,6 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/rtmintrin.h:
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/ioapiset.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/sgxintrin.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/ios:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/unknwn.h:
 
@@ -888,13 +887,9 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/xsaveoptintrin.
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/xsavesintrin.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/ostream.tcc:
-
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/xtestintrin.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/hresetintrin.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/ostream:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/immintrin.h:
 
@@ -924,11 +919,7 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512fintrin.h
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512erintrin.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/iostream:
-
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512cdintrin.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/streambuf_iterator.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512vlintrin.h:
 
@@ -951,8 +942,6 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512vbmi2intr
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winsvc.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512vnnivlintrin.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/ios_base.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/avx512vpopcntdqvlintrin.h:
 
@@ -977,8 +966,6 @@ D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/amxtileintrin.h
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/amxint8intrin.h:
 
 D:/MinGW\ 11.0/mingw64/lib/gcc/x86_64-w64-mingw32/11.1.0/include/amxbf16intrin.h:
-
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/basic_ios.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/oaidl.h:
 
@@ -1040,6 +1027,8 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/tvout.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/datetimeapi.h:
 
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/pstl/glue_algorithm_defs.h:
+
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winreg.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/reason.h:
@@ -1048,8 +1037,6 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/rpcnsip.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/winnetwk.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/x86_64-w64-mingw32/bits/ctype_base.h:
-
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/wnnc.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/cderr.h:
@@ -1057,6 +1044,8 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/cderr.h:
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/rpcnterr.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/ddeml.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/uniform_int_dist.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/dlgs.h:
 
@@ -1085,6 +1074,8 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/psdk_inc/_socket_types.h:
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/psdk_inc/_wsadata.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/psdk_inc/_xmitfile.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/node_handle.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/psdk_inc/_wsa_errnos.h:
 
@@ -1120,18 +1111,24 @@ D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/mcx.h:
 
 D:/MinGW\ 11.0/mingw64/x86_64-w64-mingw32/include/imm.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_classes.tcc:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_uninitialized.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/x86_64-w64-mingw32/bits/error_constants.h:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_bvector.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/streambuf:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/vector.tcc:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/streambuf.tcc:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_algo.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_facets.h:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/algorithmfwd.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/locale_facets.tcc:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/stl_heap.h:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/istream:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/functional:
 
-D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/istream.tcc:
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/std_function.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/hashtable.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/hashtable_policy.h:
+
+D:/MinGW\ 11.0/mingw64/include/c++/11.1.0/bits/erase_if.h:

@@ -11,6 +11,8 @@ namespace engine
 	{
 		m_hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE); // get console handle
 		m_hConsoleHandleIn = GetStdHandle(STD_INPUT_HANDLE); // get console handle
+
+		std::memset(m_KeysData, 0, 256 * sizeof(KeyData));
 	}
 
 	bool AdventoConsoleEngine::Construct(uint16_t nWidth, uint16_t nHeight, std::string sAppName)
@@ -55,7 +57,7 @@ namespace engine
 			Error("SetConsoleMode");
 
 		m_ScreenBuffer = new CHAR_INFO[nWidth * nHeight];
-		std::memset(m_ScreenBuffer, 0, nWidth * nHeight);
+		std::memset(m_ScreenBuffer, 0, sizeof(CHAR_INFO) * nWidth * nHeight);
 
 		SetConsoleCtrlHandler((PHANDLER_ROUTINE)FALSE, TRUE);
 
@@ -74,13 +76,9 @@ namespace engine
 		MessageBox(nullptr, TEXT(buf), TEXT(sMessage), MB_OK);
 	}
 
-	void AdventoConsoleEngine::Clear(engine::color clear_color)
+	void AdventoConsoleEngine::Clear(WCHAR c, engine::color clr)
 	{
-		for (int i = 0; i < int(m_nWidth * m_nHeight); ++i)
-		{
-			m_ScreenBuffer[i].Char.UnicodeChar = 0xDB;
-			m_ScreenBuffer[i].Attributes = clear_color;
-		}
+		Fill(0, 0, GetWindowSizeX(), GetWindowSizeY(), c, clr);
 	}
 
 	void AdventoConsoleEngine::NativeRender()
@@ -101,24 +99,110 @@ namespace engine
 			std::chrono::duration<float> delta = t2 - t1;
 			t1 = t2;
 
+			for (int i = 0; i < 256; ++i)
+			{
+				short nState = GetAsyncKeyState(i);
+
+				m_KeysData[i].bPressed = false;
+				m_KeysData[i].bReleased = false;
+
+				if (nState & 0x8000)
+				{
+					m_KeysData[i].bPressed = !m_KeysData[i].bHeld;
+					m_KeysData[i].bHeld = true;
+				}
+				else
+				{
+					m_KeysData[i].bReleased = true;
+					m_KeysData[i].bHeld = false;
+				}
+			}
+
+			// події
+			DWORD events = 0;
+			GetNumberOfConsoleInputEvents(m_hConsoleHandleIn, &events);
+			if (events > 0)
+			{
+				if (!ReadConsoleInput(m_hConsoleHandleIn, m_InputRecordBuf, 128, &m_dwNumRead))
+					Error("ReadConsoleInput");
+			}
+
+			for (int i = 0; i < m_dwNumRead; ++i)
+			{
+				switch (m_InputRecordBuf[i].EventType)
+				{
+					case MOUSE_EVENT:
+						if (m_InputRecordBuf[i].Event.MouseEvent.dwEventFlags == MOUSE_MOVED)
+						{
+							m_vMousePosition = { 
+								int(m_InputRecordBuf[i].Event.MouseEvent.dwMousePosition.X),
+								int(m_InputRecordBuf[i].Event.MouseEvent.dwMousePosition.Y)
+							};
+						}	
+						break;
+				}
+			}
+			
+			this->HandleInput(delta.count());
 			this->Update(delta.count());
 			this->Render();
 			this->NativeRender();
 
 			// update title
-			std::string sTitle = m_sAppName + " - FPS: " + std::to_string(1.0f / delta.count());
+			std::string sTitle = m_sAppName + " - FPS: " + std::to_string(int(1.0f / delta.count()));
 			SetConsoleTitle(sTitle.c_str());
 		}
 	}
-	
+
+	Vector_i2d AdventoConsoleEngine::GetMousePosition() const { return m_vMousePosition; }
+	int AdventoConsoleEngine::GetMouseX() const { return m_vMousePosition.x; }
+	int AdventoConsoleEngine::GetMouseY() const { return m_vMousePosition.y; }
+
+	Vector_i2d AdventoConsoleEngine::GetWindowSize() const { return Vector_i2d{ int(m_nWidth), int(m_nHeight) }; }
+	int AdventoConsoleEngine::GetWindowSizeX() const { return int(m_nWidth); }
+	int AdventoConsoleEngine::GetWindowSizeY() const { return int(m_nHeight); }
+
+	KeyData AdventoConsoleEngine::IsButton(const int button) const { return m_KeysData[button]; }
+
+	void AdventoConsoleEngine::DrawPoint(Vector_i2d vPosition, WCHAR c, engine::color renderColor)
+	{
+		if (vPosition.x >= 0 && vPosition.x < (int)m_nWidth &&
+				vPosition.y >= 0 && vPosition.y < (int)m_nHeight)
+		{
+			m_ScreenBuffer[vPosition.y * m_nWidth + vPosition.x].Char.UnicodeChar = c;
+			m_ScreenBuffer[vPosition.y * m_nWidth + vPosition.x].Attributes = renderColor;
+		}
+	}
+
+	void AdventoConsoleEngine::DrawPoint(int x, int y, WCHAR c, engine::color renderColor)
+	{
+		this->DrawPoint({ x, y }, c, renderColor);
+	}
+
+	void AdventoConsoleEngine::Fill(int x1, int y1, int x2, int y2, WCHAR c, engine::color renderColor)
+	{
+		Wrap(x1, y1);
+		Wrap(x2, y2);
+		for (int x = x1; x < x2; ++x)
+			for (int y = y1; y < y2; ++y)
+				DrawPoint(x, y, c, renderColor);
+	}
+
+	void AdventoConsoleEngine::Wrap(int &x, int &y)
+	{
+		if (x < 0) x = 0;
+		else if (x > m_nWidth) x = m_nWidth;
+
+		if (y < 0) y = 0;
+		else if (y > m_nHeight) y = m_nHeight;
+
+	}
 
 	void AdventoConsoleEngine::Start()
 	{
 		m_bRunning = true;
 		std::thread gameLoop(&AdventoConsoleEngine::GameLoop, this);
 
-		//m_bRunning = false;
 		gameLoop.join();
-		//exit(0);
 	}
 }

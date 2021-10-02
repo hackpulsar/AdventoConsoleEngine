@@ -1,0 +1,68 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	D:/Code/C++ Projects/AdventoConsoleEngine/src/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/826c2051/
+ADVENTO_CONSOLE_ENGINE	CMakeLists.txt	/^project(ADVENTO_CONSOLE_ENGINE)$/;"	p
+ADVENTO_CONSOLE_ENGINE_H	engine/AdventoConsoleEngine.h	/^#define ADVENTO_CONSOLE_ENGINE_H$/;"	d
+AdventoConsoleEngine	engine/AdventoConsoleEngine.cpp	/^	AdventoConsoleEngine::AdventoConsoleEngine()$/;"	f	class:engine::AdventoConsoleEngine
+AdventoConsoleEngine	engine/AdventoConsoleEngine.h	/^	class AdventoConsoleEngine$/;"	c	namespace:engine
+BLACK	engine/AdventoConsoleEngine.h	/^		constexpr WORD BLACK = 0x0000;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+BLUE	engine/AdventoConsoleEngine.h	/^		constexpr WORD BLUE = 0x0001;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+CYAN	engine/AdventoConsoleEngine.h	/^		constexpr WORD CYAN = 0x0003;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+Clear	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::Clear(engine::color clear_color)$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+Construct	engine/AdventoConsoleEngine.cpp	/^	bool AdventoConsoleEngine::Construct(uint16_t nWidth, uint16_t nHeight, std::string sAppName)$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:bool
+DrawPoint	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::DrawPoint(Vector_2d vPosition, engine::color renderColor)$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+DrawPoint	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::DrawPoint(int x, int y, engine::color renderColor)$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+Error	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::Error(const char* sMessage)$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+Example	CMakeLists.txt	/^add_executable(Example main.cpp)$/;"	t
+GREEN	engine/AdventoConsoleEngine.h	/^		constexpr WORD GREEN = 0x0002;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+Game	main.cpp	/^	Game()$/;"	f	class:Game	file:
+Game	main.cpp	/^class Game :$/;"	c	file:
+GameLoop	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::GameLoop()$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+GetMousePosition	engine/AdventoConsoleEngine.cpp	/^	Vector_2d AdventoConsoleEngine::GetMousePosition() const { return m_vMousePosition; }$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:Vector_2d
+GetMouseX	engine/AdventoConsoleEngine.cpp	/^	int AdventoConsoleEngine::GetMouseX() const { return m_vMousePosition.x; }$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:int
+GetMouseY	engine/AdventoConsoleEngine.cpp	/^	int AdventoConsoleEngine::GetMouseY() const { return m_vMousePosition.y; }$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:int
+HandleInput	main.cpp	/^	void HandleInput(float fDeltaTime) override$/;"	f	class:Game	typeref:typename:void	file:
+KeyData	engine/AdventoConsoleEngine.h	/^	struct KeyData$/;"	s	namespace:engine
+NativeRender	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::NativeRender()$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+PURPLE	engine/AdventoConsoleEngine.h	/^		constexpr WORD PURPLE = 0x0005;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+RED	engine/AdventoConsoleEngine.h	/^		constexpr WORD RED = 0x0004;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+Render	main.cpp	/^	void Render() override$/;"	f	class:Game	typeref:typename:void	file:
+Start	engine/AdventoConsoleEngine.cpp	/^	void AdventoConsoleEngine::Start()$/;"	f	class:engine::AdventoConsoleEngine	typeref:typename:void
+Update	main.cpp	/^	void Update(float fDeltaTime) override$/;"	f	class:Game	typeref:typename:void	file:
+Vector_2d	engine/AdventoConsoleEngine.h	/^	struct Vector_2d$/;"	s	namespace:engine
+WHITE	engine/AdventoConsoleEngine.h	/^		constexpr WORD WHITE = 0x000F;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+YELLOW	engine/AdventoConsoleEngine.h	/^		constexpr WORD YELLOW = 0x0006;$/;"	v	namespace:engine::default_colors	typeref:typename:WORD
+bHeld	engine/AdventoConsoleEngine.h	/^		bool bPressed, bHeld, bReleased;$/;"	m	struct:engine::KeyData	typeref:typename:bool
+bPressed	engine/AdventoConsoleEngine.h	/^		bool bPressed, bHeld, bReleased;$/;"	m	struct:engine::KeyData	typeref:typename:bool
+bReleased	engine/AdventoConsoleEngine.h	/^		bool bPressed, bHeld, bReleased;$/;"	m	struct:engine::KeyData	typeref:typename:bool
+color	engine/AdventoConsoleEngine.h	/^	typedef WORD color;$/;"	t	namespace:engine	typeref:typename:WORD
+default_colors	engine/AdventoConsoleEngine.h	/^	namespace default_colors$/;"	n	namespace:engine
+engine	engine/AdventoConsoleEngine.cpp	/^namespace engine$/;"	n	file:
+engine	engine/AdventoConsoleEngine.h	/^namespace engine$/;"	n
+engine	engine/CMakeLists.txt	/^add_library(engine AdventoConsoleEngine.cpp)$/;"	t
+m_CleanColor	main.cpp	/^	engine::color m_CleanColor = engine::default_colors::WHITE;$/;"	m	class:Game	typeref:typename:engine::color	file:
+m_InputRecordBuf	engine/AdventoConsoleEngine.h	/^		INPUT_RECORD m_InputRecordBuf[128];$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:INPUT_RECORD[128]
+m_KeysData	engine/AdventoConsoleEngine.h	/^		KeyData m_KeysData[256];$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:KeyData[256]
+m_ScreenBuffer	engine/AdventoConsoleEngine.h	/^		CHAR_INFO* m_ScreenBuffer = nullptr;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:CHAR_INFO *
+m_bRunning	engine/AdventoConsoleEngine.h	/^		bool m_bRunning = false;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:bool
+m_dwNumRead	engine/AdventoConsoleEngine.h	/^		DWORD m_dwNumRead;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:DWORD
+m_hConsoleHandle	engine/AdventoConsoleEngine.h	/^		HANDLE m_hConsoleHandle;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:HANDLE
+m_hConsoleHandleIn	engine/AdventoConsoleEngine.h	/^		HANDLE m_hConsoleHandleIn;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:HANDLE
+m_nHeight	engine/AdventoConsoleEngine.h	/^		uint16_t m_nWidth, m_nHeight;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:uint16_t
+m_nWidth	engine/AdventoConsoleEngine.h	/^		uint16_t m_nWidth, m_nHeight;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:uint16_t
+m_sAppName	engine/AdventoConsoleEngine.h	/^		std::string m_sAppName = "Default";$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:std::string
+m_vMousePosition	engine/AdventoConsoleEngine.h	/^		Vector_2d m_vMousePosition;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:Vector_2d
+m_windowRect	engine/AdventoConsoleEngine.h	/^		SMALL_RECT m_windowRect;$/;"	m	class:engine::AdventoConsoleEngine	typeref:typename:SMALL_RECT
+main	main.cpp	/^int main(void)$/;"	f	typeref:typename:int
+x	engine/AdventoConsoleEngine.h	/^		int x = 0, y = 0;$/;"	m	struct:engine::Vector_2d	typeref:typename:int
+y	engine/AdventoConsoleEngine.h	/^		int x = 0, y = 0;$/;"	m	struct:engine::Vector_2d	typeref:typename:int
+~AdventoConsoleEngine	engine/AdventoConsoleEngine.cpp	/^	AdventoConsoleEngine::~AdventoConsoleEngine()$/;"	f	class:engine::AdventoConsoleEngine
+~Game	main.cpp	/^	~Game()$/;"	f	class:Game	file:
