@@ -23,6 +23,7 @@ namespace engine
 		m_nWidth = nWidth;
 		m_nHeight = nHeight;
 		m_sAppName = sAppName;
+		m_WindowName = GetForegroundWindow();
 
 		// ініціцалізація консолі
 		COORD screenSize = { (short)m_nWidth, (short)m_nHeight };
@@ -163,6 +164,7 @@ namespace engine
 	int AdventoConsoleEngine::GetWindowSizeY() const { return int(m_nHeight); }
 
 	KeyData AdventoConsoleEngine::IsButton(const int button) const { return m_KeysData[button]; }
+	bool AdventoConsoleEngine::IsWindowFocused() const { return GetForegroundWindow() == m_WindowName; }
 
 	void AdventoConsoleEngine::DrawPoint(Vector_i2d vPosition, WCHAR c, engine::color renderColor)
 	{
