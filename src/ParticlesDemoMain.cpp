@@ -78,7 +78,7 @@ private:
 int main(void)
 {
 	Game game;
-	if (game.Construct(128, 120, "Example application"))
+	if (game.Construct(64, 64, 16, "Example application"))
 		game.Start();
 	return 0;
 }
