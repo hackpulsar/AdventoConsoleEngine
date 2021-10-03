@@ -33,7 +33,7 @@ private:
 int main(void)
 {
 	Demo demo;
-	if (demo.Construct(48, 48, 16, "Demo application"))
+	if (demo.Construct(64, 48, 16, "Demo application"))
 		demo.Start();
 
 	return 0;
