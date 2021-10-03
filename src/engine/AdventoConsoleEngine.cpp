@@ -15,7 +15,7 @@ namespace engine
 		std::memset(m_KeysData, 0, 256 * sizeof(KeyData));
 	}
 
-	bool AdventoConsoleEngine::Construct(uint16_t nWidth, uint16_t nHeight, std::string sAppName)
+	bool AdventoConsoleEngine::Construct(uint16_t nWidth, uint16_t nHeight, uint16_t nPixelScale, std::string sAppName)
 	{	
 		if (m_hConsoleHandleIn == INVALID_HANDLE_VALUE)
 			Error("Bad handle");
@@ -24,6 +24,9 @@ namespace engine
 		m_nHeight = nHeight;
 		m_sAppName = sAppName;
 		m_WindowName = GetForegroundWindow();
+
+		m_windowRect = { 0, 0, 1, 1 };
+		SetConsoleWindowInfo(m_hConsoleHandle, TRUE, &m_windowRect);
 
 		// ініціцалізація консолі
 		COORD screenSize = { (short)m_nWidth, (short)m_nHeight };
@@ -36,8 +39,8 @@ namespace engine
 		CONSOLE_FONT_INFOEX cfi;
 		cfi.cbSize = sizeof(cfi);
 		cfi.nFont = 0;
-		cfi.dwFontSize.X = 8;
-		cfi.dwFontSize.Y = 8;
+		cfi.dwFontSize.X = nPixelScale;
+		cfi.dwFontSize.Y = nPixelScale;
 		cfi.FontFamily = FF_DONTCARE;
 		cfi.FontWeight = FW_NORMAL;
 		
@@ -188,6 +191,19 @@ namespace engine
 		for (int x = x1; x < x2; ++x)
 			for (int y = y1; y < y2; ++y)
 				DrawPoint(x, y, c, renderColor);
+	}
+
+	void AdventoConsoleEngine::DrawString(Vector_i2d nPosition, const std::string &sData)
+	{
+		if (nPosition.x > 0 && nPosition.x < m_nWidth - sData.length() &&
+				nPosition.y > 0 && nPosition.y < m_nHeight)
+		{
+			for (int i = 0; i < (int)sData.length(); ++i)
+			{
+				m_ScreenBuffer[(nPosition.y * m_nWidth + nPosition.x) + i].Char.UnicodeChar = sData[i];
+				m_ScreenBuffer[(nPosition.y * m_nWidth + nPosition.x) + i].Attributes = engine::default_colors::WHITE;
+			}
+		}
 	}
 
 	void AdventoConsoleEngine::Wrap(int &x, int &y)

@@ -89,7 +89,8 @@ namespace engine
 		int GetWindowSizeY() const;
 
 		KeyData IsButton(const int button) const;
-
+		
+		// ПОвертає true якщо вікно сфокусоване
 		bool IsWindowFocused() const;
 
 		// Малює точку в заданих коорденитах
@@ -101,11 +102,14 @@ namespace engine
 		// Заповнює задану площину
 		void Fill(int x1, int y1, int x2, int y2, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
 
+		// Виводить строку на екран
+		void DrawString(Vector_i2d nPosition, const std::string& sData);
+
 	public:
 		AdventoConsoleEngine();
 		~AdventoConsoleEngine();
 		
-		bool Construct(uint16_t nWidth, uint16_t nHeight, std::string sAppName);
+		bool Construct(uint16_t nWidth, uint16_t nHeight, uint16_t nPixelScale, std::string sAppName);
 		void Start(); // починає обробку подій
 		
 		// Функції для наслідників класу

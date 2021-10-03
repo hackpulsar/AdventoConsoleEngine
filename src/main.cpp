@@ -23,6 +23,7 @@ public:
 	void Render() override
 	{
 		Clear(engine::pixel_types::SOLID, engine::default_colors::YELLOW);
+		DrawString({10, 10}, "First advento console string");
 	}
 
 private:
@@ -32,7 +33,7 @@ private:
 int main(void)
 {
 	Demo demo;
-	if (demo.Construct(128, 120, "Demo application"))
+	if (demo.Construct(48, 48, 16, "Demo application"))
 		demo.Start();
 
 	return 0;
