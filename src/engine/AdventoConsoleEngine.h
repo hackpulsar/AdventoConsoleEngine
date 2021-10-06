@@ -5,6 +5,17 @@
 #include <thread>
 #include <Windows.h>
 
+// Як використовувати?
+//
+// Якщо ви використовуєте Visual Studio, то все, що вам потрібно зробити 
+// - це помістити папку engine у корінний каталог вашого проекту
+//
+// Якщо ви використовуєте MinGW компілятор, 
+// то команда для компіляції буде мати наступний вигляд
+// g++ -o main.exe main.cpp engine/*.cpp -static-libgcc -static-libstdc++
+//
+// ВАЖЛИВО: ДВИГУН ВИКОРИСТОВУЄ WinAPI, ТОМУ ПРАЦЮЄ ЛИШЕ НА WINDOWS!!!
+
 namespace engine
 {
 	typedef WORD color;
