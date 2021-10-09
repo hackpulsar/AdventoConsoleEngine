@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include <math.h>
 
 namespace engine
 {
@@ -131,7 +132,7 @@ namespace engine
 					Error("ReadConsoleInput");
 			}
 
-			for (int i = 0; i < m_dwNumRead; ++i)
+			for (int i = 0; i < (int)m_dwNumRead; ++i)
 			{
 				switch (m_InputRecordBuf[i].EventType)
 				{
@@ -195,13 +196,52 @@ namespace engine
 
 	void AdventoConsoleEngine::DrawString(Vector_i2d nPosition, const std::string &sData)
 	{
-		if (nPosition.x > 0 && nPosition.x < m_nWidth - sData.length() &&
+		if (nPosition.x > 0 && nPosition.x < int(m_nWidth - sData.length()) &&
 				nPosition.y > 0 && nPosition.y < m_nHeight)
 		{
 			for (int i = 0; i < (int)sData.length(); ++i)
 			{
 				m_ScreenBuffer[(nPosition.y * m_nWidth + nPosition.x) + i].Char.UnicodeChar = sData[i];
 				m_ScreenBuffer[(nPosition.y * m_nWidth + nPosition.x) + i].Attributes = engine::default_colors::WHITE;
+			}
+		}
+	}
+
+	void AdventoConsoleEngine::DrawCircle(Vector_i2d viPosition, int nRadius, WCHAR c, engine::color renderColor)
+	{
+		if (viPosition.x >= 0 && viPosition.x < m_nWidth &&
+				viPosition.y >= 0 && viPosition.y < m_nHeight)
+		{
+			int X = viPosition.x, Y = viPosition.y;
+			double deg = 0;
+
+			// draw a circle using sin( ) and cos( )
+			do {
+				X = (int) (nRadius * cos(deg));
+				Y = (int) (nRadius * sin(deg));
+				DrawPoint(X + viPosition.x, Y + viPosition.y, c, renderColor);
+				deg +=  0.005;
+			} while (deg <= 6.4);
+		}
+	}
+
+	void AdventoConsoleEngine::FillCircle(Vector_i2d viPosition, int nRadius, WCHAR c, engine::color renderColor)
+	{
+		for(int i = 0; i < nRadius * 2; i++)
+		{
+			int dx = i - nRadius;
+			int x = viPosition.x + dx;
+
+			int h = (int)round((nRadius * 2) * sqrt((nRadius * 2) * (nRadius * 2) / 4.0 - dx * dx ) / (nRadius * 2));
+			for(int dy = 1; dy <= h; dy++)
+			{
+				DrawPoint({ x, viPosition.y + dy }, c, renderColor);
+				DrawPoint({ x, viPosition.y - dy }, c, renderColor);
+			}
+
+			if(h >= 0)
+			{
+				DrawPoint({ x, viPosition.y }, c, renderColor);
 			}
 		}
 	}

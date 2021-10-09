@@ -23,9 +23,8 @@ public:
 	void Render() override
 	{
 		Clear(engine::pixel_types::SOLID, engine::default_colors::YELLOW);
-		DrawString({10, 10}, "First advento console string");
+		FillCircle(GetMousePosition(), 10, engine::pixel_types::SOLID, engine::default_colors::BLUE);
 	}
-
 private:
 
 };

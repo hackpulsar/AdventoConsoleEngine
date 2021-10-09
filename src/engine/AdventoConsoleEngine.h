@@ -114,7 +114,11 @@ namespace engine
 		void Fill(int x1, int y1, int x2, int y2, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
 
 		// Виводить строку на екран
-		void DrawString(Vector_i2d nPosition, const std::string& sData);
+		void DrawString(Vector_i2d viPosition, const std::string& sData);
+
+		// Малює форму кола
+		void DrawCircle(Vector_i2d viPosition, int nRadius, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
+		void FillCircle(Vector_i2d viPosition, int nRadius, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
 
 	public:
 		AdventoConsoleEngine();
