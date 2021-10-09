@@ -4,7 +4,7 @@ A console engine that makes rendering in console much easier!
 # How to use?
 
 Using Visual Studio
-  All you need to do is to add "engine" folder to your project and you're ready to go!
+  1. All you need to do is to add "engine" folder to your project and you're ready to go!
 
 Using MinGW
   1. Put the "engine "folder in the root directory
