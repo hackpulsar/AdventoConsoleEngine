@@ -1,6 +1,9 @@
 #include "engine/AdventoConsoleEngine.h"
 #include "engine/Entity.h"
 
+#include "Blocks.h"
+#include <vector>
+
 class Player
 	: public engine::Entity
 {
@@ -54,11 +57,17 @@ class Demo
 public:
 	Demo()
 		: m_Player(new Player(this))
-	{  }
+	{
+		GenerateNewLevel();
+	}
 
 	~Demo()
 	{
 		delete m_Player;
+
+		for (auto& block : m_vBlocks)
+			delete block;
+		m_vBlocks.clear();
 	}
 
 	void HandleInput(float fDeltaTime) override
@@ -79,10 +88,29 @@ public:
 	void Render() override
 	{
 		Clear(engine::pixel_types::SOLID, engine::default_colors::YELLOW);
+		
+		for (const auto& block : m_vBlocks)
+			block->render();
+
 		m_Player->render();
 	}
 private:
 	Player* m_Player;
+
+	std::vector<engine::Entity*> m_vBlocks;
+
+private:
+	void GenerateNewLevel()
+	{
+		for (int y = 0; y < 4; ++y)
+		{
+			for (int x = 0; x < 7; ++x)
+			{
+				m_vBlocks.push_back(new BasicBlock(this, { float(2 + x * (16 + 2)), float(5 + y * (8 + 2)) }));
+			}
+		}
+	}
+
 };
 
 int main(void)
@@ -93,3 +121,4 @@ int main(void)
 
 	return 0;
 }
+
