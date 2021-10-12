@@ -227,23 +227,27 @@ namespace engine
 
 	void AdventoConsoleEngine::FillCircle(Vector_i2d viPosition, int nRadius, WCHAR c, engine::color renderColor)
 	{
-		for(int i = 0; i < nRadius * 2; i++)
+		if (viPosition.x >= 0 && viPosition.x < m_nWidth &&
+				viPosition.y >= 0 && viPosition.y < m_nHeight)
 		{
-			int dx = i - nRadius;
-			int x = viPosition.x + dx;
-
-			int h = (int)round((nRadius * 2) * sqrt((nRadius * 2) * (nRadius * 2) / 4.0 - dx * dx ) / (nRadius * 2));
-			for(int dy = 1; dy <= h; dy++)
+			for (int i = 0; i < nRadius * 2; i++)
 			{
-				DrawPoint({ x, viPosition.y + dy }, c, renderColor);
-				DrawPoint({ x, viPosition.y - dy }, c, renderColor);
-			}
+				int dx = i - nRadius;
+				int x = viPosition.x + dx;
 
-			if(h >= 0)
-			{
-				DrawPoint({ x, viPosition.y }, c, renderColor);
+				int h = (int)round((nRadius * 2) * sqrt((nRadius * 2) * (nRadius * 2) / 4.0 - dx * dx ) / (nRadius * 2));
+				for (int dy = 1; dy <= h; dy++)
+				{
+					DrawPoint({ x, viPosition.y + dy }, c, renderColor);
+					DrawPoint({ x, viPosition.y - dy }, c, renderColor);
+				}
+
+				if (h > 0)
+				{
+					DrawPoint({ x, viPosition.y }, c, renderColor);
+				}
 			}
-		}
+		}	
 	}
 
 	void AdventoConsoleEngine::Wrap(int &x, int &y)
