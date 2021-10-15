@@ -242,7 +242,7 @@ namespace engine
 					DrawPoint({ x, viPosition.y - dy }, c, renderColor);
 				}
 
-				if (h > 0)
+				if (h >= 0)
 				{
 					DrawPoint({ x, viPosition.y }, c, renderColor);
 				}

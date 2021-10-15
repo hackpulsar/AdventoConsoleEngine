@@ -24,8 +24,8 @@ namespace engine
 
 		void setAlive(bool value);
 		
-		Vector_f2d getPosition();
-		Vector_f2d getVelocity();
+		Vector_f2d getPosition() const;
+		Vector_f2d getVelocity() const;
 
 		void setPosition(Vector_f2d viPosition);
 		void setVelocity(Vector_f2d viVelocity);

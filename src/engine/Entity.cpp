@@ -14,8 +14,8 @@ namespace engine
 
 	void Entity::setAlive(bool value) { this->m_bAlive = value; }
 
-	Vector_f2d Entity::getPosition() { return m_vfPosition; }
-	Vector_f2d Entity::getVelocity() { return m_vfVelocity; }
+	Vector_f2d Entity::getPosition() const { return m_vfPosition; }
+	Vector_f2d Entity::getVelocity() const { return m_vfVelocity; }
 
 	void Entity::setPosition(Vector_f2d viPosition) { m_vfPosition = viPosition; }
 	void Entity::setVelocity(Vector_f2d viVelocity) { m_vfVelocity = viVelocity; }
