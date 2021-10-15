@@ -16,7 +16,7 @@ namespace engine
 		std::memset(m_KeysData, 0, 256 * sizeof(KeyData));
 	}
 
-	bool AdventoConsoleEngine::Construct(uint16_t nWidth, uint16_t nHeight, uint16_t nPixelScale, std::string sAppName)
+	bool AdventoConsoleEngine::Construct(int nWidth, int nHeight, int nPixelScale, std::string sAppName)
 	{	
 		if (m_hConsoleHandleIn == INVALID_HANDLE_VALUE)
 			Error("Bad handle");
@@ -164,8 +164,8 @@ namespace engine
 	int AdventoConsoleEngine::GetMouseY() const { return m_vMousePosition.y; }
 
 	Vector_i2d AdventoConsoleEngine::GetWindowSize() const { return Vector_i2d{ int(m_nWidth), int(m_nHeight) }; }
-	int AdventoConsoleEngine::GetWindowSizeX() const { return int(m_nWidth); }
-	int AdventoConsoleEngine::GetWindowSizeY() const { return int(m_nHeight); }
+	int AdventoConsoleEngine::GetWindowSizeX() const { return m_nWidth; }
+	int AdventoConsoleEngine::GetWindowSizeY() const { return m_nHeight; }
 
 	KeyData AdventoConsoleEngine::IsButton(const int button) const { return m_KeysData[button]; }
 	bool AdventoConsoleEngine::IsWindowFocused() const { return GetForegroundWindow() == m_WindowName; }
@@ -196,8 +196,8 @@ namespace engine
 
 	void AdventoConsoleEngine::DrawString(Vector_i2d nPosition, const std::string &sData)
 	{
-		if (nPosition.x > 0 && nPosition.x < int(m_nWidth - sData.length()) &&
-				nPosition.y > 0 && nPosition.y < m_nHeight)
+		if (nPosition.x >= 0 && nPosition.x < int(m_nWidth - sData.length()) &&
+				nPosition.y >= 0 && nPosition.y < m_nHeight)
 		{
 			for (int i = 0; i < (int)sData.length(); ++i)
 			{
@@ -263,6 +263,7 @@ namespace engine
 	void AdventoConsoleEngine::Start()
 	{
 		m_bRunning = true;
+		AppInit();
 		std::thread gameLoop(&AdventoConsoleEngine::GameLoop, this);
 
 		gameLoop.join();

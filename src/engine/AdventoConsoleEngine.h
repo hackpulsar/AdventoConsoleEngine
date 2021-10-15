@@ -105,7 +105,8 @@ namespace engine
 		AdventoConsoleEngine();
 		~AdventoConsoleEngine();
 		
-		bool Construct(uint16_t nWidth, uint16_t nHeight, uint16_t nPixelScale, std::string sAppName);
+		bool Construct(int nWidth, int nHeight, int nPixelScale, std::string sAppName);
+		virtual void AppInit() = 0;
 		void Start(); // починає обробку подій
 		
 		// Функції для наслідників класу

@@ -4,6 +4,43 @@
 #include "Blocks.h"
 #include <vector>
 
+class Ball
+	: public engine::Entity
+{
+public:
+	Ball(engine::AdventoConsoleEngine* window)
+		: engine::Entity(window, { 0.f, 0.f }, { 35.f, 35.f }, { 4, 4 })
+	{  }
+
+	void init() override
+	{
+		this->setPosition({ float(m_Window->GetWindowSizeX() / 2), float(m_Window->GetWindowSizeY() / 2) });
+	}
+
+	~Ball()
+	{  }
+
+	void handleInput(float fDeltaTime) override
+	{  }
+
+	void update(float fDeltaTime) override
+	{
+		if (m_vfPosition.x < 0 || m_vfPosition.x + m_viSize.x / 2 > m_Window->GetWindowSizeX())
+			m_vfVelocity.x = -m_vfVelocity.x;
+
+		if (m_vfPosition.y < 0 || m_vfPosition.y + m_viSize.y / 2 > m_Window->GetWindowSizeY())
+			m_vfVelocity.y = -m_vfVelocity.y;
+	}
+
+	void render() const override
+	{
+		m_Window->DrawCircle({ (int)m_vfPosition.x, (int)m_vfPosition.y }, 
+				m_viSize.x, engine::pixel_types::SOLID, engine::default_colors::BLUE);
+	}
+
+private:
+};
+
 class Player
 	: public engine::Entity
 {
@@ -13,6 +50,9 @@ public:
 	{  }
 
 	~Player()
+	{  }
+
+	void init() override
 	{  }
 
 	void handleInput(float fDeltaTime) override
@@ -56,18 +96,25 @@ class Demo
 {
 public:
 	Demo()
-		: m_Player(new Player(this))
+		: engine::AdventoConsoleEngine(), m_Player(new Player(this)), m_Ball(new Ball(this))
 	{
-		GenerateNewLevel();
+		
 	}
 
 	~Demo()
 	{
 		delete m_Player;
+		delete m_Ball;
 
 		for (auto& block : m_vBlocks)
 			delete block;
 		m_vBlocks.clear();
+	}
+
+	void AppInit() override
+	{
+		m_Ball->init();
+		GenerateNewLevel();
 	}
 
 	void HandleInput(float fDeltaTime) override
@@ -83,6 +130,7 @@ public:
 	void Update(float fDeltaTime) override
 	{
 		m_Player->update(fDeltaTime);
+		m_Ball->update(fDeltaTime);
 	}
 
 	void Render() override
@@ -93,9 +141,11 @@ public:
 			block->render();
 
 		m_Player->render();
+		m_Ball->render();
 	}
 private:
 	Player* m_Player;
+	Ball* m_Ball;
 
 	std::vector<engine::Entity*> m_vBlocks;
 

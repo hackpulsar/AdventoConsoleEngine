@@ -20,11 +20,15 @@ namespace engine
 		Entity() = default;
 		Entity(AdventoConsoleEngine* window, Vector_f2d vfPosition, Vector_f2d vfVelocity, Vector_i2d viSize);
 		virtual ~Entity();
+		virtual void init();
 
 		void setAlive(bool value);
 		
-		Vector_f2d& getPosition();
-		Vector_f2d& getVelocity();
+		Vector_f2d getPosition();
+		Vector_f2d getVelocity();
+
+		void setPosition(Vector_f2d viPosition);
+		void setVelocity(Vector_f2d viVelocity);
 
 		Vector_i2d getSize() const;
 		bool isAlive() const;
