@@ -41,9 +41,9 @@ public:
 
 	void update(float fDeltaTime) override
 	{
-		if (m_vfPosition.x < 0 || m_vfPosition.x + m_viSize.x > m_Window->GetWindowSizeX())
+		if (m_vfPosition.x - m_viSize.x < 0 || m_vfPosition.x + m_viSize.x > m_Window->GetWindowSizeX())
 			m_vfVelocity.x = -m_vfVelocity.x;
-		if (m_vfPosition.y < 0 || m_vfPosition.y + m_viSize.y > m_Window->GetWindowSizeY())
+		if (m_vfPosition.y - m_viSize.y < 0 || m_vfPosition.y + m_viSize.y > m_Window->GetWindowSizeY())
 			m_vfVelocity.y = -m_vfVelocity.y;
 
 		m_vfPosition.x += m_vfVelocity.x * fDeltaTime;
@@ -146,9 +146,7 @@ public:
 	}
 
 	void Update(float fDeltaTime) override
-	{
-		//TODO: delect ball collision with bricks
-		
+	{		
 		if (m_Ball->getPosition().x >= m_Player->getPosition().x &&
 				m_Ball->getPosition().x + m_Ball->getSize().x < m_Player->getPosition().x + m_Player->getSize().x)
 		{
@@ -165,15 +163,22 @@ public:
 
 		if (it != m_vBlocks.end())
 		{
-			if (m_Ball->getPosition().x + m_Ball->getSize().x > (*it)->getPosition().x)
-				m_Ball->setVelocity({ -m_Ball->getVelocity().x, m_Ball->getVelocity().y });
-			else if (m_Ball->getPosition().x - m_Ball->getSize().x < (*it)->getPosition().x + (*it)->getSize().x)
-				m_Ball->setVelocity({ -m_Ball->getVelocity().x, m_Ball->getVelocity().y });
+			const float fVelXOld = m_Ball->getVelocity().x;
+			const float fVelYOld = m_Ball->getVelocity().y;
 
-			if (m_Ball->getPosition().y + m_Ball->getSize().y > (*it)->getPosition().y)
-				m_Ball->setVelocity({ -m_Ball->getVelocity().x, -m_Ball->getVelocity().y });
-			else if (m_Ball->getPosition().y - m_Ball->getSize().y < (*it)->getPosition().y + (*it)->getSize().y)
-				m_Ball->setVelocity({ -m_Ball->getVelocity().x, -m_Ball->getVelocity().y });
+			float fVelXNew = fVelXOld, fVelYNew = fVelYOld;
+
+			if (m_Ball->getPosition().y - m_Ball->getSize().y >= (*it)->getPosition().y
+					&& m_Ball->getPosition().y + m_Ball->getSize().y <= (*it)->getPosition().y + (*it)->getSize().y)
+			{
+				fVelXNew = fVelXOld * -1.0f;
+			}
+			else
+			{
+				fVelYNew = fVelYOld * -1.0f;
+			}
+
+			m_Ball->setVelocity({ fVelXNew, fVelYNew });
 
 			m_vBlocks.erase(it);
 		}
@@ -205,7 +210,7 @@ private:
 		{
 			for (int x = 0; x < 7; ++x)
 			{
-				m_vBlocks.push_back(new BasicBlock(this, { float(2 + x * (16 + 2)), float(5 + y * (8 + 2)) }));
+				m_vBlocks.push_back(new BasicBlock(this, { float(2 + x * (16 + 2)), float(4 + y * (8 + 2)) }));
 			}
 		}
 	}
