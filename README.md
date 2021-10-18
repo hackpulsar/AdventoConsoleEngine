@@ -8,7 +8,7 @@ Using Visual Studio
 
 Using MinGW
   1. Put the "engine" folder in the root directory
-  2. Compile command: g++ -o main.exe main.cpp engine/*.cpp -static-libgcc -static-libstdc++
+  2. Compile command: g++ -o main.exe main.cpp engine/*.cpp -static-libgcc -static-libstdc++ -static-libpthread
 
 **WARNING: The engine uses WinApi to draw stuff to console so it only works for windows**
 
