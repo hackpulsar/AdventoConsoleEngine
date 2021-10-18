@@ -22,6 +22,8 @@ public:
 	}
 };
 
+// Litle addition to basic example,
+// add it to the game and use as you want :)
 class CounterBlock
 	: public engine::Entity
 {

@@ -15,7 +15,7 @@
 //
 // Якщо ви використовуєте MinGW компілятор, 
 // то команда для компіляції буде мати наступний вигляд
-// g++ -o main.exe main.cpp engine/*.cpp -static-libgcc -static-libstdc++
+// g++ -o main.exe main.cpp engine/*.cpp -static-libgcc -static-libstdc++ -libwinpthread
 //
 // ВАЖЛИВО: ДВИГУН ВИКОРИСТОВУЄ WinAPI, ТОМУ ПРАЦЮЄ ЛИШЕ НА WINDOWS!!!
 

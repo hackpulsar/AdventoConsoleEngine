@@ -25,7 +25,7 @@ class Ball
 {
 public:
 	Ball(engine::AdventoConsoleEngine* window)
-		: engine::Entity(window, { 0.f, 0.f }, { 25.f, 25.f }, { 4, 4 })
+		: engine::Entity(window, { 0.f, 0.f }, { 25.f, 25.f }, { 8, 8 })
 	{  }
 
 	void init() override
@@ -41,10 +41,25 @@ public:
 
 	void update(float fDeltaTime) override
 	{
-		if (m_vfPosition.x - m_viSize.x < 0 || m_vfPosition.x + m_viSize.x > m_Window->GetWindowSizeX())
-			m_vfVelocity.x = -m_vfVelocity.x;
-		if (m_vfPosition.y - m_viSize.y < 0 || m_vfPosition.y + m_viSize.y > m_Window->GetWindowSizeY())
-			m_vfVelocity.y = -m_vfVelocity.y;
+		if (m_vfPosition.x <= 0.0f)
+		{
+			if (m_vfVelocity.x < 0.0f)
+				m_vfVelocity.x = -m_vfVelocity.x;
+		}
+		else if (m_vfPosition.x + m_viSize.x >= m_Window->GetWindowSizeX())
+		{
+			if (m_vfVelocity.x > 0.0f)
+				m_vfVelocity.x = -m_vfVelocity.x;
+		}
+
+		if (m_vfPosition.y <= 0.0f)
+		{
+			if (m_vfVelocity.y < 0.0f)
+				m_vfVelocity.y = -m_vfVelocity.y;
+		}
+
+		if (m_vfPosition.y + m_viSize.y >= m_Window->GetWindowSizeY())
+			m_bAlive = false;
 
 		m_vfPosition.x += m_vfVelocity.x * fDeltaTime;
 		m_vfPosition.y += m_vfVelocity.y * fDeltaTime;
@@ -52,8 +67,9 @@ public:
 
 	void render() const override
 	{
-		m_Window->DrawCircle({ (int)m_vfPosition.x, (int)m_vfPosition.y }, 
-				m_viSize.x, engine::pixel_types::SOLID, engine::default_colors::BLUE);
+		m_Window->DrawCircle({ (int)m_vfPosition.x + m_viSize.x / 2, (int)m_vfPosition.y + m_viSize.y / 2 }, 
+				m_viSize.x / 2, engine::pixel_types::SOLID, engine::default_colors::BLUE);
+		// m_Window->DrawPoint((int)m_vfPosition.x, (int)m_vfPosition.y, engine::pixel_types::SOLID, engine::default_colors::RED);
 	}
 
 private:
@@ -85,7 +101,7 @@ public:
 		}
 		else
 		{
-			m_vfVelocity = { 0, 0 };
+			m_vfVelocity = { 0.f, 0.f };
 		}
 	}
 
@@ -102,7 +118,7 @@ public:
 	void render() const override
 	{
 		m_Window->Fill(m_vfPosition.x, m_vfPosition.y, m_vfPosition.x + m_viSize.x, m_vfPosition.y + m_viSize.y,
-				engine::pixel_types::SOLID, engine::default_colors::BLUE);
+				engine::pixel_types::SOLID, engine::default_colors::BLUE);	
 	}
 
 private:
@@ -131,22 +147,39 @@ public:
 
 	void AppInit() override
 	{
+		m_Player = new Player(this);
+		m_Ball = new Ball(this);
+
 		m_Ball->init();
 		GenerateNewLevel();
+
+		m_bRunning = true;
 	}
 
 	void HandleInput(float fDeltaTime) override
 	{
 		if (IsWindowFocused())
 		{
-			// stuff
-		
-			m_Player->handleInput(fDeltaTime);
+			if (m_bRunning == false)
+			{
+				if (m_KeysData[VK_SPACE].bPressed)
+				{
+					AppInit();
+				}
+			}
+			
+			if (m_bRunning)
+				m_Player->handleInput(fDeltaTime);
 		}
 	}
 
 	void Update(float fDeltaTime) override
-	{		
+	{
+		if (m_Ball->isAlive() == false)
+			m_bRunning = false;
+
+		if (!m_bRunning) return;
+
 		if (m_Ball->getPosition().x >= m_Player->getPosition().x &&
 				m_Ball->getPosition().x + m_Ball->getSize().x < m_Player->getPosition().x + m_Player->getSize().x)
 		{
@@ -168,8 +201,8 @@ public:
 
 			float fVelXNew = fVelXOld, fVelYNew = fVelYOld;
 
-			if (m_Ball->getPosition().y - m_Ball->getSize().y >= (*it)->getPosition().y
-					&& m_Ball->getPosition().y + m_Ball->getSize().y <= (*it)->getPosition().y + (*it)->getSize().y)
+			if (m_Ball->getPosition().y + m_Ball->getSize().y - 1 >= (*it)->getPosition().y
+					&& m_Ball->getPosition().y + 1 < (*it)->getPosition().y + (*it)->getSize().y)
 			{
 				fVelXNew = fVelXOld * -1.0f;
 			}
@@ -196,10 +229,17 @@ public:
 
 		m_Player->render();
 		m_Ball->render();
+
+		if (!m_bRunning)
+		{
+			this->DrawString({ GetWindowSizeX() / 2 - 4, GetWindowSizeY() / 2 }, m_vBlocks.size() == 0 ? "You won!" : "You Losed!");
+		}
 	}
 private:
 	Player* m_Player;
 	Ball* m_Ball;
+	
+	bool m_bRunning;
 
 	std::vector<engine::Entity*> m_vBlocks;
 
