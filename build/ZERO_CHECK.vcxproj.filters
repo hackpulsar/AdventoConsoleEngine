@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Code\C++ Projects\AdventoConsoleEngine\build\CMakeFiles\3d70dd13f562e6a0050eb52293539a08\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{0153F17C-FCB3-3EF8-987D-15CF488F69F8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

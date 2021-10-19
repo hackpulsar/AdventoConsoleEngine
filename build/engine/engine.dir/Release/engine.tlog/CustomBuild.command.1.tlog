@@ -1,0 +1,10 @@
+^D:\CODE\C++ PROJECTS\ADVENTOCONSOLEENGINE\SRC\ENGINE\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe "-SD:/Code/C++ Projects/AdventoConsoleEngine/src" "-BD:/Code/C++ Projects/AdventoConsoleEngine/build" --check-stamp-file "D:/Code/C++ Projects/AdventoConsoleEngine/build/engine/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
