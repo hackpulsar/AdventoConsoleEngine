@@ -1,0 +1,10 @@
+^D:\CODE\C++ PROJECTS\ADVENTOCONSOLEENGINE\BUILD\CMAKEFILES\3D70DD13F562E6A0050EB52293539A08\GENERATE.STAMP.RULE
+setlocal
+D:\CMake\bin\cmake.exe "-SD:/Code/C++ Projects/AdventoConsoleEngine/src" "-BD:/Code/C++ Projects/AdventoConsoleEngine/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Code/C++ Projects/AdventoConsoleEngine/build/ADVENTO_CONSOLE_ENGINE.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
