@@ -1,4 +1,0 @@
-D:/Code/C++ Projects/AdventoConsoleEngine/build/CMakeFiles/Example.dir
-D:/Code/C++ Projects/AdventoConsoleEngine/build/CMakeFiles/ALL_BUILD.dir
-D:/Code/C++ Projects/AdventoConsoleEngine/build/CMakeFiles/ZERO_CHECK.dir
-D:/Code/C++ Projects/AdventoConsoleEngine/build/engine/CMakeFiles/engine.dir
