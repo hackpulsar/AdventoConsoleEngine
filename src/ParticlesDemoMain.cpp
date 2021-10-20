@@ -21,6 +21,9 @@ public:
 	~Game()
 	{  }
 
+	void AppInit() override
+	{  }
+
 	void HandleInput(float fDeltaTime) override
 	{
 		if (IsWindowFocused())
@@ -66,7 +69,7 @@ public:
 		for (int i = 0; i < m_vParticles.size(); ++i)
 		{
 			Particle& p = m_vParticles[i];
-			Fill(p.vPos.x, p.vPos.y, p.vPos.x + 1, p.vPos.y + 1, 
+			Fill(p.vPos.x, p.vPos.y, p.vPos.x + 1, p.vPos.y + 1,
 					engine::pixel_types::SOLID, engine::default_colors::YELLOW);
 		}
 	}
@@ -78,7 +81,7 @@ private:
 int main(void)
 {
 	Game game;
-	if (game.Construct(64, 64, 16, "Example application"))
+	if (game.Construct(64, 64, 16, L"Example application"))
 		game.Start();
 	return 0;
 }

@@ -13,18 +13,24 @@
 // Якщо ви використовуєте Visual Studio, то все, що вам потрібно зробити 
 // - це помістити папку engine у корінний каталог вашого проекту
 //
-// Якщо ви використовуєте MinGW компілятор, 
+// Якщо ви використовуєте MinGW компілятор,
 // то команда для компіляції буде мати наступний вигляд
 // g++ -o main.exe main.cpp engine/*.cpp -static-libgcc -static-libstdc++ -libwinpthread
 //
 // ВАЖЛИВО: ДВИГУН ВИКОРИСТОВУЄ WinAPI, ТОМУ ПРАЦЮЄ ЛИШЕ НА WINDOWS!!!
+
+#ifndef UNICODE
+#define PIXEL_SOLID 0xDB
+#else
+#define PIXEL_SOLID 0x2588
+#endif
 
 namespace engine
 {	
 	namespace pixel_types
 	{
 		constexpr WCHAR EMPTY = 0x0000;
-		constexpr WCHAR SOLID = 0xDB;
+		constexpr WCHAR SOLID = PIXEL_SOLID;
 	}
 
 	struct KeyData
@@ -53,7 +59,7 @@ namespace engine
 
 	protected:
 		// Ітформація про вікно
-		std::string m_sAppName = "Default";
+		std::wstring m_sAppName = L"Default";
 		uint16_t m_nWidth, m_nHeight;
 		CHAR_INFO* m_ScreenBuffer = nullptr;
 
@@ -86,26 +92,26 @@ namespace engine
 		bool IsWindowFocused() const;
 
 		// Малює точку в заданих коорденитах
-		void DrawPoint(Vector_i2d vPosition, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
+		void DrawPoint(Vector_i2d vPosition, WCHAR c = 0x2588, engine::color renderColor = 0x000F);
 
 		// Малює точку в заданих координатах
-		void DrawPoint(int x, int y, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
+		void DrawPoint(int x, int y, WCHAR c = 0x2588, engine::color renderColor = 0x000F);
 
 		// Заповнює задану площину
-		void Fill(int x1, int y1, int x2, int y2, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
+		void Fill(int x1, int y1, int x2, int y2, WCHAR c = 0x2588, engine::color renderColor = 0x000F);
 
 		// Виводить строку на екран
 		void DrawString(Vector_i2d viPosition, const std::string& sData);
 
 		// Малює форму кола
-		void DrawCircle(Vector_i2d viPosition, int nRadius, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
-		void FillCircle(Vector_i2d viPosition, int nRadius, WCHAR c = 0xDB, engine::color renderColor = 0x000F);
+		void DrawCircle(Vector_i2d viPosition, int nRadius, WCHAR c = 0x2588, engine::color renderColor = 0x000F);
+		void FillCircle(Vector_i2d viPosition, int nRadius, WCHAR c = 0x2588, engine::color renderColor = 0x000F);
 
 	public:
 		AdventoConsoleEngine();
 		~AdventoConsoleEngine();
 		
-		bool Construct(int nWidth, int nHeight, int nPixelScale, std::string sAppName);
+		bool Construct(int nWidth, int nHeight, int nPixelScale, std::wstring sAppName);
 		virtual void AppInit() = 0;
 		void Start(); // починає обробку подій
 		
@@ -118,7 +124,7 @@ namespace engine
 		void GameLoop(); // ігровий потік
 		void NativeRender(); // охоплює малювання та оновлення m_ScreenBuffer (нативно)
 
-		void Error(const char* sMessage);
+		void Error(const wchar_t* sMessage);
 
 		void Wrap(int &x, int &y);
 	};	

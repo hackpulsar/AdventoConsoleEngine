@@ -297,7 +297,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\Code\C++ Projects\AdventoConsoleEngine\src\main.cpp" />
+    <ClCompile Include="D:\Code\C++ Projects\AdventoConsoleEngine\src\ParticlesDemoMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\Code\C++ Projects\AdventoConsoleEngine\build\ZERO_CHECK.vcxproj">

@@ -16,10 +16,10 @@ namespace engine
 		std::memset(m_KeysData, 0, 256 * sizeof(KeyData));
 	}
 
-	bool AdventoConsoleEngine::Construct(int nWidth, int nHeight, int nPixelScale, std::string sAppName)
+	bool AdventoConsoleEngine::Construct(int nWidth, int nHeight, int nPixelScale, std::wstring sAppName)
 	{	
 		if (m_hConsoleHandleIn == INVALID_HANDLE_VALUE)
-			Error("Bad handle");
+			Error(L"Bad handle");
 
 		m_nWidth = nWidth;
 		m_nHeight = nHeight;
@@ -32,9 +32,9 @@ namespace engine
 		// ініціцалізація консолі
 		COORD screenSize = { (short)m_nWidth, (short)m_nHeight };
 		if (!SetConsoleScreenBufferSize(m_hConsoleHandle, screenSize)) // розмір
-			Error("SetConsoleScreenBufferSize");
+			Error(L"SetConsoleScreenBufferSize");
 		if (!SetConsoleActiveScreenBuffer(m_hConsoleHandle)) // встановити активне вікно
-			Error("SetConsoleActiveScreenBuffer");
+			Error(L"SetConsoleActiveScreenBuffer");
 		
 		// налаштування шрифта
 		CONSOLE_FONT_INFOEX cfi;
@@ -47,7 +47,7 @@ namespace engine
 		
 		wcscpy_s(cfi.FaceName, L"Consolas");
 		if (!SetCurrentConsoleFontEx(m_hConsoleHandle, false, &cfi)) // встановити налаштування шрифту
-			Error("SetCurrentConsoleFontEx");
+			Error(L"SetCurrentConsoleFontEx");
 
 		CONSOLE_CURSOR_INFO info;
 		info.dwSize = 100;
@@ -56,10 +56,10 @@ namespace engine
 
 		m_windowRect = { 0, 0, short(m_nWidth - 1), short(m_nHeight - 1) };
 		if (!SetConsoleWindowInfo(m_hConsoleHandle, TRUE, &m_windowRect)) // встановити позицію та розмів вікна
-			Error("SetConsoleWindowInfo");
+			Error(L"SetConsoleWindowInfo");
 
 		if (!SetConsoleMode(m_hConsoleHandleIn, ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT))
-			Error("SetConsoleMode");
+			Error(L"SetConsoleMode");
 
 		m_ScreenBuffer = new CHAR_INFO[nWidth * nHeight];
 		std::memset(m_ScreenBuffer, 0, sizeof(CHAR_INFO) * nWidth * nHeight);
@@ -74,11 +74,11 @@ namespace engine
 		delete[] m_ScreenBuffer;
 	}
 
-	void AdventoConsoleEngine::Error(const char* sMessage)
+	void AdventoConsoleEngine::Error(const wchar_t* sMessage)
 	{
-		char buf[256];
-		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, 256, NULL);
-		MessageBox(nullptr, TEXT(buf), TEXT(sMessage), MB_OK);
+		wchar_t buf[256];
+		FormatMessageW(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, 256, NULL);
+		MessageBoxW(nullptr, buf, sMessage, MB_OK);
 	}
 
 	void AdventoConsoleEngine::Clear(WCHAR c, engine::color clr)
@@ -129,7 +129,7 @@ namespace engine
 			if (events > 0)
 			{
 				if (!ReadConsoleInput(m_hConsoleHandleIn, m_InputRecordBuf, 128, &m_dwNumRead))
-					Error("ReadConsoleInput");
+					Error(L"ReadConsoleInput");
 			}
 
 			for (int i = 0; i < (int)m_dwNumRead; ++i)
@@ -154,8 +154,8 @@ namespace engine
 			this->NativeRender();
 
 			// update title
-			std::string sTitle = m_sAppName + " - FPS: " + std::to_string(int(1.0f / delta.count()));
-			SetConsoleTitle(sTitle.c_str());
+			std::wstring sTitle = m_sAppName + L" - FPS: " + std::to_wstring(int(1.0f / delta.count()));
+			SetConsoleTitleW(sTitle.c_str());
 		}
 	}
 

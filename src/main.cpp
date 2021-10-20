@@ -175,6 +175,9 @@ public:
 
 	void Update(float fDeltaTime) override
 	{
+		if (m_vBlocks.size() == 0)
+			m_Ball->setAlive(false);
+
 		if (m_Ball->isAlive() == false)
 			m_bRunning = false;
 
@@ -260,7 +263,7 @@ private:
 int main(void)
 {
 	Demo demo;
-	if (demo.Construct(128, 112, 8, "Demo application"))
+	if (demo.Construct(128, 112, 8, L"Demo application"))
 		demo.Start();
 
 	return 0;
